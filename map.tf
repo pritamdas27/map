@@ -11,7 +11,7 @@ variable "instance_names" {
 
 # Define the EC2 instances using for_each
 resource "aws_instance" "ec2_instances" {
-  for_each = toset(var.instance_names) # Convert list to set for iteration
+  for_each = length(var.instance_names) # Convert list to set for iteration
 
   ami           = "ami-04b4f1a9cf54c11d0" # Example AMI for Amazon Linux 2 (Change as needed)
   instance_type = "t2.small"
